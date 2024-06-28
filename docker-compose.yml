@@ -3,19 +3,21 @@ version: '3.8'
 services:
   backend:
     build:
-      context: ./fastapi-backend
+      context: ./backend
     ports:
       - "8000:8000"
     networks:
       - app-network
+    restart: always
 
   frontend:
     build:
-      context: ./react-frontend
+      context: ./frontend
     ports:
       - "3000:3000"
     networks:
       - app-network
+    restart: always
 
 networks:
   app-network:
