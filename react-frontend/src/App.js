@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from 'react';
-import './App.css';
 
 function App() {
-  const [message, setMessage] = useState('');
+  const [data, setData] = useState(null);
 
   useEffect(() => {
-    fetch('http://0.0.0.0:8000/')
+    fetch('http://159.65.172.123:8000/')
       .then(response => response.json())
-      .then(data => setMessage(data.message));
+      .then(data => setData(data))
+      .catch(error => console.error('Error fetching data:', error));
   }, []);
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>{message}</h1>
+        <h1>FastAPI + React App</h1>
+        {data ? <pre>{JSON.stringify(data, null, 2)}</pre> : <p>Loading...</p>}
       </header>
     </div>
   );
