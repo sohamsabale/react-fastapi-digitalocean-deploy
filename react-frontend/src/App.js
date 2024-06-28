@@ -5,7 +5,7 @@ function App() {
   const [message, setMessage] = useState('');
 
   useEffect(() => {
-    fetch('http://159.65.172.123:8000/')
+    fetch('http://0.0.0.0:8000/')
       .then(response => response.json())
       .then(data => setMessage(data.message));
   }, []);
