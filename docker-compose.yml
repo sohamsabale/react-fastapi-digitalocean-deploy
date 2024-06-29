@@ -1,34 +1,38 @@
 version: '3.8'
 
 services:
-  backend:
-    build:
-      context: ./fastapi-backend
-    ports:
-      - "8000:8000"
-    networks:
-      - app-network
-    restart: always
-
-  frontend:
+  react-frontend:
+    container_name: react-frontend
     build:
       context: ./react-frontend
+      dockerfile: Dockerfile
     ports:
       - "3000:3000"
     networks:
       - app-network
-    restart: always
+
+  fastapi-backend:
+    container_name: fastapi-backend
+    build:
+      context: ./fastapi-backend
+      dockerfile: Dockerfile
+    ports:
+      - "8000:8000"
+    networks:
+      - app-network
 
   nginx:
-    image: nginx:latest
     container_name: nginx
+    image: nginx:latest
+    volumes:
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
     ports:
       - "80:80"
-    volumes:
-      - ./nginx/nginx.conf:/etc/nginx/nginx.conf:ro
     depends_on:
-      - frontend
-      - backend
+      - react-frontend
+      - fastapi-backend
+    networks:
+      - app-network
 
 networks:
   app-network:
