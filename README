@@ -1,0 +1,15 @@
+1. Local Development
+    a. FastAPI App
+    b. React App
+    c. Dockerize both apps
+2. Push code to Github
+3. Digitalocean Deployment
+    a. Create DigitalOcean Droplet(linux machine)
+    b. Create a local copy of the repo from github
+    c. Run docker-compose within the droplet
+4. Deploy it to www
+    a. Purchase domain(in this instance-AWS)
+    b. Create Name server records in AWS pointing the domain name to droplet's IP address
+5. Enhacements
+    a. Add nginx load balancer(to expose port 80)
+    b. Add SSL certificate
