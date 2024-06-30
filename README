@@ -13,3 +13,4 @@
 5. Enhacements
     a. Add nginx load balancer(to expose port 80)
     b. Add SSL certificate
+    c. CI/CD pipeline - github actions
