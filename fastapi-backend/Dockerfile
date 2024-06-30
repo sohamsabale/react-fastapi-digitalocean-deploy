@@ -1,12 +1,17 @@
-# Dockerfile for FastAPI Backend
-FROM tiangolo/uvicorn-gunicorn-fastapi:python3.8
+# Use the official Python image from the Docker Hub
+FROM python:3.9-slim
 
+# Set the working directory inside the container
 WORKDIR /app
 
-COPY requirements.txt .
+# Copy the current directory contents into the container at /app
+COPY . /app
 
-RUN pip install -r requirements.txt
+# Install dependencies
+RUN pip install --no-cache-dir fastapi uvicorn fastapi-cors
 
-COPY . .
+# Expose the port on which the FastAPI app will run
+EXPOSE 8000
 
+# Command to run the FastAPI server
 CMD ["uvicorn", "main:app", "--host", "0.0.0.0", "--port", "8000"]
