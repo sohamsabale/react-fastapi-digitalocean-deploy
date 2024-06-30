@@ -16,6 +16,7 @@ services:
     container_name: nginx
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+      - ./nginx/conf.d:/etc/nginx/conf.d
       - /data/letsencrypt:/data/letsencrypt
       - /etc/letsencrypt:/etc/letsencrypt
     ports:
