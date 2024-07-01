@@ -8,8 +8,6 @@ services:
     ports:
       - "8000:8000"  # Adjust if necessary
     restart: always
-    depends_on:
-      - db  # Example dependency
 
   frontend:
     build:
