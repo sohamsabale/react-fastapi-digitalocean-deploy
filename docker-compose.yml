@@ -5,7 +5,7 @@ services:
     build:
       context: ./react-frontend
     ports:
-      - "80:80"  # Map container port 80 to host port 8080 to avoid conflict with nginx
+      - "8080:80"  # Map container port 80 to host port 8080 to avoid conflict with nginx
     restart: always
 
   backend:
