@@ -25,6 +25,9 @@ services:
       - "80:80"    # HTTP port
       - "443:443"  # HTTPS port
     restart: always
+    depends_on:
+      - frontend
+      - backend
 
 networks:
   default:
