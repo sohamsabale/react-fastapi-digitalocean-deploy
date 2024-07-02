@@ -5,7 +5,6 @@ on:
     branches:
       - main
   workflow_dispatch:
-  # This allows manual triggering from the GitHub UI
 
 jobs:
   deploy:
@@ -15,12 +14,6 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v2
 
-    - name: Debug SSH Key
-      run: |
-        echo "${{ secrets.DO_SSH_PRIVATE_KEY }}" > github_actions_key
-        cat github_actions_key
-      shell: bash
-
     - name: Set up SSH
       uses: webfactory/ssh-agent@v0.5.3
       with:
@@ -29,14 +22,14 @@ jobs:
     - name: Copy repository to droplet
       run: |
         ssh ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
-          mkdir -p react-fastapi-digitalocean-deploy
+          mkdir -p /path/to/your/app
         EOF
-        scp -r . ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:react-fastapi-digitalocean-deploy
+        scp -r . ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:/path/to/your/app
 
     - name: SSH and deploy
       run: |
         ssh ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
-          cd react-fastapi-digitalocean-deploy
+          cd /path/to/your/app
           docker-compose down
           docker-compose up -d --build
         EOF
