@@ -6,7 +6,7 @@ function App() {
   const [loading, setLoading] = useState(true); // State to manage loading state
 
   useEffect(() => {
-    fetch('http://142.93.67.138:8000/')
+    fetch('http://159.65.184.119:8000//')
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
