@@ -34,7 +34,7 @@ services:
 #     networks:
 #       - default
 
-networks:
-  default:
-    external:
-      name: react-fastapi-digitalocean-deploy_default
+# networks:
+#   default:
+#     external:
+#       name: react-fastapi-digitalocean-deploy_default
