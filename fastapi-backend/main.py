@@ -13,5 +13,5 @@ app.add_middleware(
 
 @app.get("/")
 async def read_root():
-    return {"message": "Hello World - July 2nd  Deployment"}
+    return {"message": "Hello World - July 3rd  Deployment"}
 
