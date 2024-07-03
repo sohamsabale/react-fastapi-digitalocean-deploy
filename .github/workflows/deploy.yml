@@ -19,13 +19,6 @@ jobs:
       with:
         ssh-private-key: ${{ secrets.DO_SSH_PRIVATE_KEY }}
 
-    - name: Add remote server to known hosts
-      run: |
-        mkdir -p ~/.ssh
-        echo "159.65.184.119 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCm0vs8HXyeNzWU8Z1zz5AB0htxPVb9IQuecNq39fhYyGFM5SP3WV7+otjnICaIsZBmhob6NTc/yhPWj9zyVV8utKGWqjgqf/LqeKeB1p1bCLA0Inm38LodZ1f45WGxUPTJAMTJgoX3dqJwz1y6Yod4dcg8BrnOnXFxmyYZXJ1dE/BTEea2LZ4QVFlEhd0GyOHNDCexRbXYOi1+Wi3ZusoojXeFfa2DV3tWVgTFyZKEhRh19XwegyDR+PXGIiv/LBaPp96TwYE5aJZn7o23bv6iH0D29ATBNwk4YegpZqMRkG/mm0da+EuiilN8oA9wzfTLzj0zPDwL/z84/B8JmNmmrHFxzJKrbka7gykmDudkOcLjiueKeKgUJ3UhND2yP1WhkRz9YnxxVtDpbOTpuQ5wcKj6WGpPL6GUNeAStuK51vKnCDM9kyQMpgSv1/Xu5AUmHWwMFgCqXamdMYx7vbZ1rusRgyB+UlvhUFJ6sYY1XANlW2VGB/I6+D1weJ/BnJ0=" >> ~/.ssh/known_hosts
-        echo "159.65.184.119 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBF+uqUN9fsJXFQv6dNDf3RacxOAZzEV+Gu+Z2YW3G6trw1SbhJxy7EVs1fRgc/F58qICIfdKw2YHL6fHrJdvcsY=" >> ~/.ssh/known_hosts
-        echo "159.65.184.119 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJWZZLbNwiADUsSKjKp7VPcwYlgHvmLva6sCXyoGf0z2" >> ~/.ssh/known_hosts
-
     - name: Copy repository to droplet
       run: |
         ssh -t ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
