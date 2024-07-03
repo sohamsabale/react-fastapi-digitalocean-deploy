@@ -14,3 +14,13 @@
     a. Add nginx load balancer(to expose port 80)
     b. Add SSL certificate(run certbot to obtain SSL certificate)
     c. CI/CD pipeline - github actions
+        c1. Set Up SSH Keys
+            Generate SSH Keys: Generate SSH keys on your local machine if you haven't already (ssh-keygen -t rsa).
+            Add Public Key to Server: Ensure the public key (id_rsa.pub) is added to your server's ~/.ssh/authorized_keys file.
+        c2. Configure GitHub Secrets
+            Add SSH Key: Go to your GitHub repository.
+            Navigate to Settings -> Secrets -> New repository secret.
+            Add two secrets: DO_SSH_PRIVATE_KEY (contents of your private key file) and DO_SSH_USERNAME (your server username).
+        c3. Add known Hosts
+            ssh-keyscan -H example.com >> ~/.ssh/known_hosts
+
