@@ -31,7 +31,7 @@ jobs:
         ssh -t ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
           mkdir -p react-fastapi-digitalocean-deploy
         EOF
-        rsync -avz -e "ssh -o StrictHostKeyChecking=no" ./ ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:react-fastapi-digitalocean-deploy
+        rsync -avz -e "ssh -o StrictHostKeyChecking=yes" ./ ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:react-fastapi-digitalocean-deploy
 
     - name: SSH and deploy
       run: |
