@@ -31,7 +31,7 @@ jobs:
         ssh -t ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
           mkdir -p react-fastapi-digitalocean-deploy
         EOF
-        scp -o StrictHostKeyChecking=no -r . ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:react-fastapi-digitalocean-deploy
+        scp -o StrictHostKeyChecking=no -r ./ ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:react-fastapi-digitalocean-deploy
 
     - name: SSH and deploy
       run: |
