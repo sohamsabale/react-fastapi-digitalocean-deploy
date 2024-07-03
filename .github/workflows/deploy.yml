@@ -22,14 +22,14 @@ jobs:
     - name: Copy repository to droplet
       run: |
         ssh ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
-          mkdir -p /path/to/your/app
+          mkdir -p react-fastapi-digitalocean-deploy
         EOF
-        scp -r . ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:/path/to/your/app
+        scp -r . ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }}:react-fastapi-digitalocean-deploy
 
     - name: SSH and deploy
       run: |
         ssh ${{ secrets.DO_SSH_USERNAME }}@${{ secrets.DO_SSH_HOST }} << 'EOF'
-          cd /path/to/your/app
+          cd react-fastapi-digitalocean-deploy
           docker-compose down
           docker-compose up -d --build
         EOF
